@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum News</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <h1>Spectrum<span>News</span></h1>
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search for news, topics, or journalists...">
+            </div>
+            <div class="auth">
+                <button class="sign-in">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="sidebar">
+                <div class="filter-section">
+                    <h2>Filter Results</h2>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Political Bias</h3>
+                    <div class="bias-filter">
+                        <div class="bias-option" data-bias="left">
+                            <div class="bias-circle left-bias"></div>
+                            <span>Left</span>
+                        </div>
+                        <div class="bias-option" data-bias="center-left">
+                            <div class="bias-circle center-left-bias"></div>
+                        </div>
+                        <div class="bias-option" data-bias="center">
+                            <div class="bias-circle center-bias"></div>
+                            <span>Center</span>
+                        </div>
+                        <div class="bias-option" data-bias="center-right">
+                            <div class="bias-circle center-right-bias"></div>
+                        </div>
+                        <div class="bias-option" data-bias="right">
+                            <div class="bias-circle right-bias"></div>
+                            <span>Right</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Source Reliability</h3>
+                    <div class="reliability-slider">
+                        <input type="range" min="0" max="100" value="70" class="slider" id="reliability-slider">
+                        <div class="slider-labels">
+                            <span>Low</span>
+                            <span>High</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Time Range</h3>
+                    <select id="time-range">
+                        <option value="1">Past 24 hours</option>
+                        <option value="7" selected>Past 7 days</option>
+                        <option value="30">Past 30 days</option>
+                        <option value="90">Past 3 months</option>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Topics</h3>
+                    <ul class="topics-list">
+                        <li class="active" data-topic="politics">Politics</li>
+                        <li data-topic="economy">Economy</li>
+                        <li data-topic="technology">Technology</li>
+                        <li data-topic="climate">Climate</li>
+                        <li data-topic="health">Health</li>
+                        <li data-topic="international">International</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="view-options">
+                    <button class="view-option active" data-view="all">All</button>
+                    <button class="view-option" data-view="by-topic">By Topic</button>
+                    <button class="view-option" data-view="compare">Compare</button>
+                </div>
+
+                <div id="news-container">
+                    <div class="loading">Loading news articles...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="article-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="article-detail"></div>
+        </div>
+    </div>
+
+    <div id="comparison-modal" class="modal">
+        <div class="modal-content comparison-content">
+            <span class="close-modal">&times;</span>
+            <h2>Article Comparison</h2>
+            <div class="comparison-container">
+                <div class="article-column left-article">
+                    <div class="article-header"></div>
+                    <div class="article-content"></div>
+                </div>
+                <div class="article-column right-article">
+                    <div class="article-header"></div>
+                    <div class="article-content"></div>
+                </div>
+            </div>
+            <div class="common-facts">
+                <h3>Common Facts</h3>
+                <ul id="common-facts-list"></ul>
+            </div>
+            <div class="key-differences">
+                <h3>Key Differences</h3>
+                <ul id="differences-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Spectrum News. All rights reserved.</p>
+            <p>A balanced news aggregation platform.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
